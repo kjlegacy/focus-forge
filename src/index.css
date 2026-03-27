@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+/* Ensure we use any custom animations or configurations needed */
+/* In v4, we can define theme variables directly in CSS if needed */
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Custom glow utility for the dark mobile app look */
+.glow-orange {
+    filter: drop-shadow(0 0 20px rgba(255, 128, 0, 0.6));
+}
+
+.glow-white {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+}

@@ -30,24 +30,8 @@
     3.  🧙‍♂️ **Character:** XP Bar and stats.
     4.  🛒 **Merchant:** (Planned for v2 - skip for MVP).
 
----
 
-## 3. Core Gameplay Loop
-1.  **Start:** User selects duration (e.g., 25 mins) and taps "Ignite Forge".
-2.  **The Rule:** Phone must be placed face-up on a desk and left entirely alone.
-3.  **Success:** Timer ends, phone vibrates (Haptic API), weapon is crafted and saved to Armory.
-4.  **Failure:** User cancels timer or moves phone excessively. Weapon shatters. 0 XP.
-
----
-
-## 4. Mobile-Specific Engineering Traps (CRITICAL)
-* **The "Sleeping iPhone" Trap:** iOS suspends background JavaScript. **Never use `setInterval` for the main countdown.** Always calculate remaining time by comparing `Date.now()` against a saved `endTime` timestamp in `localStorage`.
-* **The Apple Permission Wall:** Device motion cannot be accessed secretly. The app requires a one-time onboarding screen with a physical button tap to trigger the iOS `DeviceMotionEvent.requestPermission()` prompt.
-* **The "Untouched" Sensor:** Use the `DeviceMotion` API. Allow a 5-second grace period after starting. If moved, flash a red warning. If untouched for the full duration, award the "Flawless" modifier.
-
----
-
-## 5. The Rarity & Loot System
+## 3. The Rarity & Loot System
 Rarity is determined by session length and motion sensor data. SVGs will dynamically take these hex colors:
 * **Poor:** `#9d9d9d` (Gray) - Cancelled early.
 * **Common:** `#ffffff` (White) - Finished, but phone was moved.
@@ -58,15 +42,3 @@ Rarity is determined by session length and motion sensor data. SVGs will dynamic
 
 Saved data structure per weapon in `localStorage` should look like:
 `{ id, weaponType, rarity, color, taskName, durationMins, date, flawless }`
-
----
-
-## 6. Iterative MVP Roadmap (Step-by-Step)
-*This project must be built in micro-steps to accommodate fast AI models.*
-* **Step 1:** Initialize Vite + React + Tailwind + Git.
-* **Step 2:** Build the basic layout (Black background, Bottom Nav skeleton).
-* **Step 3:** Build the Timestamp-based Timer logic (no motion sensing yet).
-* **Step 4:** Build the UI for the Forge (Start button, timer display).
-* **Step 5:** Implement the iOS Motion Permission onboarding and sensor logic.
-* **Step 6:** Build the Loot generation logic (calculate rarity, save to `localStorage`).
-* **Step 7:** Build the Armory UI to display the `localStorage` inventory.

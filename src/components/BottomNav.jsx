@@ -1,12 +1,12 @@
 import React from 'react';
-import { GiAnvil, GiCrossedSwords, GiCharacter, GiTwoCoins } from 'react-icons/gi';
+import { GiAnvil, GiCrossedSwords, GiCharacter, GiTwoCoins, GiThorHammer } from 'react-icons/gi';
 
 export default function BottomNav({ activeTab, setActiveTab }) {
   const tabs = [
     { id: 'Forge', icon: GiAnvil, label: 'Forge' },
+    { id: 'Smith', icon: GiThorHammer, label: 'Smith' },
     { id: 'Armory', icon: GiCrossedSwords, label: 'Armory' },
-    { id: 'Character', icon: GiCharacter, label: 'Character' },
-    { id: 'Merchant', icon: GiTwoCoins, label: 'Merchant' },
+    { id: 'Market', icon: GiTwoCoins, label: 'Market' },
   ];
 
   return (

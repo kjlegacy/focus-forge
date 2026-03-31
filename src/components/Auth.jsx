@@ -60,6 +60,19 @@ export default function Auth() {
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-sm flex flex-col items-center z-10"
       >
+        {/* VERCEL DEPLOYMENT WARNING */}
+        {!import.meta.env.VITE_SUPABASE_URL && (
+          <div className="w-full max-w-sm bg-red-950/40 border-2 border-red-600/50 p-6 rounded-3xl mb-8 flex flex-col items-center text-center shadow-[0_0_50px_rgba(220,38,38,0.2)] backdrop-blur-md">
+            <h2 className="text-red-500 font-black uppercase tracking-[0.2em] mb-3 text-sm italic">System Vault Locked</h2>
+            <p className="text-zinc-300 text-[10px] uppercase font-bold tracking-widest leading-relaxed">
+              Vercel Deployment Detected.
+              <br/><br/>
+              Supabase Environment Variables are missing from your Vercel Project Settings.
+              <br/><br/>
+              To forge ahead: Add <span className="text-white">VITE_SUPABASE_URL</span> and <span className="text-white">VITE_SUPABASE_ANON_KEY</span> to Vercel and redeploy.
+            </p>
+          </div>
+        )}
         <div className="mb-10 relative">
           <GiAnvil size={120} className="text-orange-600 drop-shadow-[0_0_30px_rgba(234,88,12,0.4)]" />
           <motion.div
